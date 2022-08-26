@@ -153,6 +153,7 @@
     <Content Include="scripts\jquery.slim.min.js" />
     <Content Include="scripts\popper.min.js" />
     <Content Include="scripts\scripts.js" />
+    <Content Include="SectionMaster.aspx" />
     <Content Include="StudentDetails.aspx" />
     <Content Include="verification.aspx" />
     <Content Include="Web.config" />
@@ -193,6 +194,13 @@
     </Compile>
     <Compile Include="ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SectionMaster.aspx.cs">
+      <DependentUpon>SectionMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SectionMaster.aspx.designer.cs">
+      <DependentUpon>SectionMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="StudentDetails.aspx.cs">
       <DependentUpon>StudentDetails.aspx</DependentUpon>

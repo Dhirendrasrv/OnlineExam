@@ -139,3 +139,8 @@ E:\OnlineExam\ExceptionManager\ExceptionManager\bin\Debug\ExceptionManager.pdb
 E:\OnlineExam\ExceptionManager\ExceptionManager\obj\Debug\ExceptionManager.csprojResolveAssemblyReference.cache
 E:\OnlineExam\ExceptionManager\ExceptionManager\obj\Debug\ExceptionManager.dll
 E:\OnlineExam\ExceptionManager\ExceptionManager\obj\Debug\ExceptionManager.pdb
+E:\OnlineExam\OnlineExam\ExceptionManager\ExceptionManager\bin\Debug\ExceptionManager.dll
+E:\OnlineExam\OnlineExam\ExceptionManager\ExceptionManager\bin\Debug\ExceptionManager.pdb
+E:\OnlineExam\OnlineExam\ExceptionManager\ExceptionManager\obj\Debug\ExceptionManager.csprojResolveAssemblyReference.cache
+E:\OnlineExam\OnlineExam\ExceptionManager\ExceptionManager\obj\Debug\ExceptionManager.dll
+E:\OnlineExam\OnlineExam\ExceptionManager\ExceptionManager\obj\Debug\ExceptionManager.pdb

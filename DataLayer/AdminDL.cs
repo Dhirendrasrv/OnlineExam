@@ -130,38 +130,48 @@ namespace DataLayer
                 throw ex;
             }
         }
-        //public DataSet GetAllCategory()
-        //{
-        //    DataSet ds = new DataSet();
-        //    try
-        //    {
-        //        LbSprocParameter[] parameter;
-        //        parameter = new LbSprocParameter[0];
-        //        ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
-        //        ds = elhelper.ExecuteDataset("USP_Admin_GetAllCategory", parameter);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return ds;
-        //}
+        public DataSet GetAllSectionMaster()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                LbSprocParameter[] parameter;
+                parameter = new LbSprocParameter[0];
+                ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+                ds = elhelper.ExecuteDataset("sp_AdminGetAllSectionMaster", parameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
 
-        //public int SetCategory(CategoryCls category)
-        //{
-        //    LbSprocParameter[] parameter;
-        //    parameter = new LbSprocParameter[5];
-        //    parameter[0] = new LbSprocParameter("Id", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, category.idCategory);
-        //    parameter[1] = new LbSprocParameter("sName", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, category.sName);
-        //    parameter[2] = new LbSprocParameter("status", DbType.Boolean, LbSprocParameter.LbParameterDirection.INPUT, category.bStatus);
-        //    parameter[3] = new LbSprocParameter("CreatedBy", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, category.Createdby);
-        //    parameter[4] = new LbSprocParameter("ModifyBy", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, category.ModifyBy);
-        //    ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+        public int SetSectionMaster(SectionMaster category)
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[3];
+            parameter[0] = new LbSprocParameter("Id", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, category.IdSectionMaster);
+            parameter[1] = new LbSprocParameter("SectionName", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, category.SectionName);
+            parameter[2] = new LbSprocParameter("bActive", DbType.Boolean, LbSprocParameter.LbParameterDirection.INPUT, category.bActive);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
 
-        //    int Response = 0;
-        //    Response = Convert.ToInt32(elhelper.ExecuteScalar("USP_Admin_SetCategory", parameter));
-        //    return Response;
-        //}
+            int Response = 0;
+            Response = Convert.ToInt32(elhelper.ExecuteScalar("sp_AdminSetSectionMaster", parameter));
+            return Response;
+        }
+
+        public int DeleteSectionMaster(int idSectionMaster)
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[1];
+            parameter[0] = new LbSprocParameter("IdCategory", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, idSectionMaster);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+
+            int Response = 0;
+            Response = Convert.ToInt32(elhelper.ExecuteScalar("sp_AdminDeleteSectionMaster", parameter));
+            return Response;
+        }
 
 
         //public int SaveHomeSliderImage(HomeSliderCls objHomeSliderCls)
@@ -202,17 +212,7 @@ namespace DataLayer
         //    return ds;
         //}
 
-        //public int DeleteCategory(int idCategory)
-        //{
-        //    LbSprocParameter[] parameter;
-        //    parameter = new LbSprocParameter[1];
-        //    parameter[0] = new LbSprocParameter("IdCategory", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, idCategory);
-        //    ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
 
-        //    int Response = 0;
-        //    Response = Convert.ToInt32(elhelper.ExecuteScalar("USP_Admin_DeleteCategory", parameter));
-        //    return Response;
-        //}
 
         //public int DeleteHomeSlider(int idHomePageSlider)
         //{
