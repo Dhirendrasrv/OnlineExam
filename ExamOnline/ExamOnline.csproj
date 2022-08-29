@@ -142,6 +142,7 @@
     <Content Include="css\sb-admin-2.min.css" />
     <Content Include="css\styles.css" />
     <Content Include="Index.aspx" />
+    <Content Include="QuestionPaperMaster.aspx" />
     <Content Include="RegistrationAdmin.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
@@ -181,6 +182,13 @@
       <DependentUpon>OnlineExam.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionPaperMaster.aspx.cs">
+      <DependentUpon>QuestionPaperMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionPaperMaster.aspx.designer.cs">
+      <DependentUpon>QuestionPaperMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationAdmin.aspx.cs">
       <DependentUpon>RegistrationAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

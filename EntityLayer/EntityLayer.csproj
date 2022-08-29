@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminCls.cs" />
+    <Compile Include="ListItem.cs" />
+    <Compile Include="MessageResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionMaster.cs" />
+    <Compile Include="QuestionPaperMaster.cs" />
     <Compile Include="SectionMaster.cs" />
     <Compile Include="StudentAnswer.cs" />
     <Compile Include="StudentDetails.cs" />

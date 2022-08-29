@@ -173,7 +173,103 @@ namespace DataLayer
             return Response;
         }
 
+        public DataSet GetAllQuestionPaperMaster()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                LbSprocParameter[] parameter;
+                parameter = new LbSprocParameter[0];
+                ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+                ds = elhelper.ExecuteDataset("sp_AdminGetAllQuestionPaperMaster", parameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
 
+        public int SetQuestionPaperMaster(QuestionPaperMaster category)
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[5];
+            parameter[0] = new LbSprocParameter("IdQuestionPaperMaster", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, category.QuestionPaperMasterId);
+            parameter[1] = new LbSprocParameter("sName", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, category.sName);
+            parameter[2] = new LbSprocParameter("bActive", DbType.Boolean, LbSprocParameter.LbParameterDirection.INPUT, category.bActive);
+            parameter[3] = new LbSprocParameter("NumberofQuestions", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, category.NumberofQuestions);
+            parameter[4] = new LbSprocParameter("Time", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, category.Time);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+
+            int Response = 0;
+            Response = Convert.ToInt32(elhelper.ExecuteScalar("sp_AdminSetQuestionPaperMaster", parameter));
+            return Response;
+        }
+
+        public int DeleteQuestionPaperMaster(int idQuestionPaperMaster)
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[1];
+            parameter[0] = new LbSprocParameter("IdQuestionPaperMaster", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, idQuestionPaperMaster);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+
+            int Response = 0;
+            Response = Convert.ToInt32(elhelper.ExecuteScalar("sp_AdminDeleteQuestionPaperMaster", parameter));
+            return Response;
+        }
+
+        public DataSet GetAllQuestionMaster()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                LbSprocParameter[] parameter;
+                parameter = new LbSprocParameter[0];
+                ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+                ds = elhelper.ExecuteDataset("sp_AdminGetAllQuestionMaster", parameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public MessageResponse SetQuestionMaster(QuestionMaster question)
+        {
+            LbSprocParameter[] parameter = new LbSprocParameter[10];
+            parameter[0] = new LbSprocParameter("Id", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, question.QuestionMasterId);
+            parameter[1] = new LbSprocParameter("Question", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Question);
+            parameter[2] = new LbSprocParameter("Option1", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Option1);
+            parameter[3] = new LbSprocParameter("Option2", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Option2);
+            parameter[4] = new LbSprocParameter("Option3", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Option3);
+            parameter[5] = new LbSprocParameter("Option4", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Option4);
+            parameter[6] = new LbSprocParameter("SectionId", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, question.SectionId);
+            parameter[7] = new LbSprocParameter("bActive", DbType.Boolean, LbSprocParameter.LbParameterDirection.INPUT, question.bActive);
+            parameter[8] = new LbSprocParameter("nError", DbType.Int32, LbSprocParameter.LbParameterDirection.OUTPUT, 255);
+            parameter[9] = new LbSprocParameter("sMsg", DbType.String, LbSprocParameter.LbParameterDirection.OUTPUT, 500);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+            MessageResponse objResponse = new MessageResponse();
+            elhelper.ExecuteNonQuery("sp_AdminSetQuestionMaster", parameter);
+            objResponse.nError = Convert.IsDBNull(elhelper.GetParameterValue("@nError")) ? 0 : Convert.ToInt32(elhelper.GetParameterValue("@nError"));
+            objResponse.sMsg = Convert.IsDBNull(elhelper.GetParameterValue("@sMsg")) ? "" : Convert.ToString(elhelper.GetParameterValue("@sMsg"));
+            return objResponse;
+        }
+
+        public MessageResponse DeleteQuestionMaster(int idQuestionMaster)
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[3];
+            parameter[0] = new LbSprocParameter("IdQuestion", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, idQuestionMaster);
+            parameter[1] = new LbSprocParameter("nError", DbType.Int32, LbSprocParameter.LbParameterDirection.OUTPUT, 255);
+            parameter[2] = new LbSprocParameter("sMsg", DbType.String, LbSprocParameter.LbParameterDirection.OUTPUT, 500);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+            MessageResponse objResponse = new MessageResponse();
+            elhelper.ExecuteNonQuery("sp_AdminDeleteQuestionMaster", parameter);
+            objResponse.nError = Convert.IsDBNull(elhelper.GetParameterValue("@nError")) ? 0 : Convert.ToInt32(elhelper.GetParameterValue("@nError"));
+            objResponse.sMsg = Convert.IsDBNull(elhelper.GetParameterValue("@sMsg")) ? "" : Convert.ToString(elhelper.GetParameterValue("@sMsg"));
+            return objResponse;
+        }
         //public int SaveHomeSliderImage(HomeSliderCls objHomeSliderCls)
         //{
         //    LbSprocParameter[] parameter;
