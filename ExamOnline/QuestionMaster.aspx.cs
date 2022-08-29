@@ -41,7 +41,8 @@ namespace ExamOnline
                 lstItem = new List<EntityLayer.ListItem>();
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
-                    lstItem.Add(new EntityLayer.ListItem {
+                    lstItem.Add(new EntityLayer.ListItem
+                    {
                         ID = Convert.ToString(ds.Tables[0].Rows[i]["SectionMasterId"]),
                         Name = Convert.ToString(ds.Tables[0].Rows[i]["SectionName"])
                     });
@@ -75,7 +76,8 @@ namespace ExamOnline
             Label lblOpt2 = e.Item.FindControl("lblOpt2") as Label;
             Label lblOpt3 = e.Item.FindControl("lblOpt3") as Label;
             Label lblOpt4 = e.Item.FindControl("lblOpt4") as Label;
-            HiddenField hdnAnswerId = e.Item.FindControl("hdnAnswerId") as HiddenField;
+            Label lblAns = e.Item.FindControl("lblAnswer") as Label;
+            //HiddenField hdnAnswerId = e.Item.FindControl("hdnAnswerId") as HiddenField;
             HiddenField hdnSectionId = e.Item.FindControl("hdnSectionId") as HiddenField;
             Label lblstatus = e.Item.FindControl("lblStatus") as Label;
             HiddenField hdn = e.Item.FindControl("hdnId") as HiddenField;
@@ -93,24 +95,31 @@ namespace ExamOnline
                     txtOption3.Text = lblOpt3.Text;
                     txtOption4.Text = lblOpt4.Text;
                     ddlSection.SelectedValue = hdnSectionId.Value;
-                    if (!string.IsNullOrEmpty(hdnAnswerId.Value))
+                    if (!string.IsNullOrEmpty(lblAns.Text))
                     {
-                        switch (Convert.ToInt32(hdnAnswerId.Value))
+                        string[] ans = (lblAns.Text).Split(',');
+                        for (int i = 0; i < ans.Length; i++)
                         {
-                            case 1:
-                                chkOption1.Checked = true;
-                                break;
-                            case 2:
-                                chkOption2.Checked = true;
-                                break;
-                            case 3:
-                                chkOption3.Checked = true;
-                                break;
-                            case 4:
-                                chkOption4.Checked = true;
-                                break;
-                            default:
-                                break;
+                            if (!string.IsNullOrEmpty(ans[i]))
+                            {
+                                switch (Convert.ToInt32(ans[i]))
+                                {
+                                    case 1:
+                                        chkOption1.Checked = true;
+                                        break;
+                                    case 2:
+                                        chkOption2.Checked = true;
+                                        break;
+                                    case 3:
+                                        chkOption3.Checked = true;
+                                        break;
+                                    case 4:
+                                        chkOption4.Checked = true;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
                         }
                     }
                     chkStatus.Checked = (lblstatus.Text.ToUpper() == "ACTIVE");
@@ -125,7 +134,7 @@ namespace ExamOnline
         private void DeleteQuestion(int idQuestionMaster)
         {
             AdminDL objAdminCls = new AdminDL();
-            hdMessage.Value = "Category Delete |";
+            hdMessage.Value = "Question Delete |";
             MessageResponse Response = objAdminCls.DeleteQuestionMaster(idQuestionMaster);
             if (Response.nError == 0)
             {
@@ -163,6 +172,25 @@ namespace ExamOnline
             objQuestionMaster.Option4 = txtOption4.Text.Trim();
             objQuestionMaster.SectionId = Convert.ToInt32(ddlSection.SelectedItem.Value);
             objQuestionMaster.bActive = chkStatus.Checked;
+            string Answer = "";
+            if (chkOption1.Checked)
+            {
+                Answer += "1,";
+            }
+            if (chkOption2.Checked)
+            {
+                Answer += "2,";
+            }
+            if (chkOption3.Checked)
+            {
+                Answer += "3,";
+            }
+            if (chkOption4.Checked)
+            {
+                Answer += "4";
+            }
+            objQuestionMaster.Answer = Answer;
+            //= chkOption1.Text + "," + chkOption2.Text;
             MessageResponse Response = objAdminCls.SetQuestionMaster(objQuestionMaster);
             if (Response.nError == 0)
             {

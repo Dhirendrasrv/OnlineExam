@@ -237,8 +237,8 @@ namespace DataLayer
 
         public MessageResponse SetQuestionMaster(QuestionMaster question)
         {
-            LbSprocParameter[] parameter = new LbSprocParameter[10];
-            parameter[0] = new LbSprocParameter("Id", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, question.QuestionMasterId);
+            LbSprocParameter[] parameter = new LbSprocParameter[11];
+            parameter[0] = new LbSprocParameter("IdQuestionMaster", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, question.QuestionMasterId);
             parameter[1] = new LbSprocParameter("Question", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Question);
             parameter[2] = new LbSprocParameter("Option1", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Option1);
             parameter[3] = new LbSprocParameter("Option2", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Option2);
@@ -246,11 +246,12 @@ namespace DataLayer
             parameter[5] = new LbSprocParameter("Option4", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Option4);
             parameter[6] = new LbSprocParameter("SectionId", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, question.SectionId);
             parameter[7] = new LbSprocParameter("bActive", DbType.Boolean, LbSprocParameter.LbParameterDirection.INPUT, question.bActive);
-            parameter[8] = new LbSprocParameter("nError", DbType.Int32, LbSprocParameter.LbParameterDirection.OUTPUT, 255);
-            parameter[9] = new LbSprocParameter("sMsg", DbType.String, LbSprocParameter.LbParameterDirection.OUTPUT, 500);
+            parameter[8] = new LbSprocParameter("Answer", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, question.Answer);
+            parameter[9] = new LbSprocParameter("nError", DbType.Int32, LbSprocParameter.LbParameterDirection.OUTPUT, 255);
+            parameter[10] = new LbSprocParameter("sMsg", DbType.String, LbSprocParameter.LbParameterDirection.OUTPUT, 500);
             ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
             MessageResponse objResponse = new MessageResponse();
-            elhelper.ExecuteNonQuery("sp_AdminSetQuestionMaster", parameter);
+            elhelper.ExecuteNonQuery("sp_SetQuestionMaster", parameter);
             objResponse.nError = Convert.IsDBNull(elhelper.GetParameterValue("@nError")) ? 0 : Convert.ToInt32(elhelper.GetParameterValue("@nError"));
             objResponse.sMsg = Convert.IsDBNull(elhelper.GetParameterValue("@sMsg")) ? "" : Convert.ToString(elhelper.GetParameterValue("@sMsg"));
             return objResponse;

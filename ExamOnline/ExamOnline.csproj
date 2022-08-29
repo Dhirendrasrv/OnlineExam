@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\dataTables.bootstrap4.min.css" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -142,6 +143,7 @@
     <Content Include="css\sb-admin-2.min.css" />
     <Content Include="css\styles.css" />
     <Content Include="Index.aspx" />
+    <Content Include="QuestionMaster.aspx" />
     <Content Include="QuestionPaperMaster.aspx" />
     <Content Include="RegistrationAdmin.aspx" />
     <Content Include="ResetPassword.aspx" />
@@ -157,7 +159,9 @@
     <Content Include="SectionMaster.aspx" />
     <Content Include="StudentDetails.aspx" />
     <Content Include="verification.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForgotPassword.aspx.cs">
@@ -182,6 +186,13 @@
       <DependentUpon>OnlineExam.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionMaster.aspx.cs">
+      <DependentUpon>QuestionMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionMaster.aspx.designer.cs">
+      <DependentUpon>QuestionMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuestionPaperMaster.aspx.cs">
       <DependentUpon>QuestionPaperMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

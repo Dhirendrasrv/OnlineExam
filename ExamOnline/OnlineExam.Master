@@ -51,7 +51,41 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <div class="sb-sidenav-menu-heading">Menu</div>
+
+                            <a class="nav-link" href="StudentDetails.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Student Details
+                            </a>
+                            <a class="nav-link" href="SectionMaster.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Section Master
+                            </a>
+                            <a class="nav-link" href="QuestionMaster.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Question Master
+                            </a>
+                            <a class="nav-link" href="AnswerMaster.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Answer Master
+                            </a>
+                            <a class="nav-link" href="QuestionPaperMaster.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Question Paper Master
+                            </a>
+                            <a class="nav-link" href="QuestionPaperSectionMapping.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Question Paper Section Mapping
+                            </a>
+                            <a class="nav-link" href="StudentAnswer.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Student Answer
+                            </a>
+                             <a class="nav-link" href="StudentResult.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Student Result
+                            </a>
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Layouts

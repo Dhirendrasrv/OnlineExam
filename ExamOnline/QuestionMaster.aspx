@@ -1,8 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OnlineExam.Master" AutoEventWireup="true" CodeBehind="QuestionMaster.aspx.cs" Inherits="ExamOnline.QuestionMaster" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="~/css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <%--   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />--%>
+    <%--<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>--%>
+     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <%--<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />--%>
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <style>
         .floatRight {
             float: right;
@@ -30,10 +35,19 @@
         .fontcolour {
             color: red;
         }
+
+        .checkedOption {
+            position: absolute;
+            left: 0;
+            width: 1rem;
+            height: 1.25rem;
+        }
+
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+
     <main>
         <div class="container-fluid px-4">
             <asp:HiddenField ID="hdMessage" runat="server" ClientIDMode="Static" />
@@ -92,17 +106,17 @@
                                         <asp:Label ID="lblAnswer" runat="server" ClientIDMode="Static" Text='<%#Eval("Answer")%>'></asp:Label>
                                     </td>
                                     <td>
-                                        <a class="btn btn-<%# Convert.ToString(Eval("bActive"))=="True" ? "info" : "secondary"  %> btn-icon-split" style="color: white;">
+                                        <a class="btn btn-<%# Convert.ToString(Eval("Status"))=="True" ? "info" : "secondary"  %> btn-icon-split" style="color: white;">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-arrow-right"></i>
                                             </span>
                                             <span class="text">
-                                                <asp:Label ID="LblStatus" runat="server" ClientIDMode="Static" Text='<%# Convert.ToString(Eval("bActive"))=="True" ? "Active":"InActive" %>'></asp:Label></span>
+                                                <asp:Label ID="LblStatus" runat="server" ClientIDMode="Static" Text='<%# Convert.ToString(Eval("Status"))=="True" ? "Active":"InActive" %>'></asp:Label></span>
                                         </a>
                                     </td>
                                     <td>
                                         <asp:HiddenField ID="hdnId" runat="server" Value='<%#Eval("QuestionMasterId") %>' />
-                                        <asp:HiddenField ID="hdnAnswerId" runat="server" Value='<%#Eval("AnswerId") %>' />
+                                        <%--<asp:HiddenField ID="hdnAnswerId" runat="server" Value='<%#Eval("AnswerId") %>' />--%>
                                         <asp:HiddenField ID="hdnSectionId" runat="server" Value='<%#Eval("SectionId") %>' />
                                         <asp:LinkButton ID="lnkEdit" runat="server" CommandName="CatEdit" CssClass="btn btn-success btn-circle btn-sm" CommandArgument='<%#Eval("QuestionMasterId") %>'><i class="fas fa-edit"></i></asp:LinkButton>
                                         <asp:LinkButton ID="lnkDelete" runat="server" CommandName="CatDelete" CssClass="btn btn-danger btn-circle btn-sm" CommandArgument='<%#Eval("QuestionMasterId") %>' OnClientClick="return confirm('Are you sure you want delete');"><i class="fas fa-trash"></i></asp:LinkButton>
@@ -126,7 +140,7 @@
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="ddlSection" class="form-label">Section</label>
-                            <asp:DropDownList ID="ddlSection" runat="server" class="form-control form-select" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlSection" runat="server" class="form-control form-select"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" CssClass="fontcolour" ControlToValidate="ddlSection" runat="server" ErrorMessage="Please select a section." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -142,6 +156,8 @@
                             <label for="txtOption1" class="form-label">Option1</label>
                             <asp:TextBox ID="txtOption1" runat="server" class="form-control form-control-user" placeholder="Enter an option1" MaxLength="500"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="fontcolour" ControlToValidate="txtOption1" runat="server" ErrorMessage="Please enter an option1." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
                             <asp:CheckBox ID="chkOption1" runat="server" CssClass="custom-control-input" />
                         </div>
                     </div>
@@ -150,14 +166,18 @@
                             <label for="txtOption2" class="form-label">Option2</label>
                             <asp:TextBox ID="txtOption2" runat="server" class="form-control form-control-user" placeholder="Enter an option2" MaxLength="500"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="fontcolour" ControlToValidate="txtOption2" runat="server" ErrorMessage="Please enter an option2." ValidationGroup="save"></asp:RequiredFieldValidator>
-                            <asp:CheckBox ID="chkOption2" runat="server" CssClass="" />
-                         </div>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
+                            <asp:CheckBox ID="chkOption2" runat="server" CssClass="custom-control-input" />
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="txtOption3" class="form-label">Option3</label>
                             <asp:TextBox ID="txtOption3" runat="server" class="form-control form-control-user" placeholder="Enter an option3" MaxLength="500"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" CssClass="fontcolour" ControlToValidate="txtOption3" runat="server" ErrorMessage="Please enter an option3." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
                             <asp:CheckBox ID="chkOption3" runat="server" CssClass="custom-control-input" />
                         </div>
                     </div>
@@ -166,10 +186,13 @@
                             <label for="txtOption4" class="form-label">Option4</label>
                             <asp:TextBox ID="txtOption4" runat="server" class="form-control form-control-user" placeholder="Enter an option4" MaxLength="500"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" CssClass="fontcolour" ControlToValidate="txtOption4" runat="server" ErrorMessage="Please enter an option4." ValidationGroup="save"></asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
                             <asp:CheckBox ID="chkOption4" runat="server" CssClass="custom-control-input" />
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <div class="custom-control custom-checkbox large">
                             <span class="backspace"></span>
                             <asp:CheckBox ID="chkStatus" runat="server" CssClass="custom-control-input" ClientIDMode="Static" />
@@ -183,10 +206,13 @@
 
         </div>
         <!-- Page level plugins -->
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/scripts/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="/scripts/datatables-simple-demo.js"></script>
+        <script src="/scripts/datatables-simple-demo.js"></script>--%>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#dataTable').DataTable({

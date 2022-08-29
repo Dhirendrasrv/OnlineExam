@@ -25,7 +25,7 @@ namespace ExamOnline
         private void GetSectionMaster()
         {
             AdminDL objAdminCls = new AdminDL();
-            hdMessage.Value = "Category |";
+            hdMessage.Value = "Section Master |";
             DataSet ds = objAdminCls.GetAllSectionMaster();
             lstSectionMaster.DataSource = ds.Tables[0];
             lstSectionMaster.DataBind();
@@ -66,7 +66,7 @@ namespace ExamOnline
         private void DeleteCategory(int idSectionMaster)
         {
             AdminDL objAdminCls = new AdminDL();
-            hdMessage.Value = "Category Delete |";
+            hdMessage.Value = "Section Master Delete |";
             int Response = objAdminCls.DeleteSectionMaster(idSectionMaster);
             if (Response > 0)
             {
