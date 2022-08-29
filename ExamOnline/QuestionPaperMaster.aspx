@@ -122,19 +122,19 @@
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <asp:TextBox ID="txtQuestionPaperName" runat="server" class="form-control form-control-user" placeholder="Question Paper Name" MaxLength="100"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="fontcolour" ControlToValidate="txtQuestionPaperName" runat="server" ErrorMessage="Please Enter Section Name." ValidationGroup="save"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="fontcolour" ControlToValidate="txtQuestionPaperName" runat="server" ErrorMessage="Please Enter Question Paper Name." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <asp:TextBox ID="txtNoofQues" runat="server" class="form-control form-control-user" placeholder="Number of Questions" MaxLength="100"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="fontcolour" ControlToValidate="txtNoofQues" runat="server" ErrorMessage="Please Enter Section Name." ValidationGroup="save"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="fontcolour" ControlToValidate="txtNoofQues" runat="server" ErrorMessage="Please Enter Number of Questions." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <asp:TextBox ID="txtTime" runat="server" class="form-control form-control-user" placeholder="Time" MaxLength="100"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="fontcolour" ControlToValidate="txtTime" runat="server" ErrorMessage="Please Enter Section Name." ValidationGroup="save"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="fontcolour" ControlToValidate="txtTime" runat="server" ErrorMessage="Please Enter time." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group">
