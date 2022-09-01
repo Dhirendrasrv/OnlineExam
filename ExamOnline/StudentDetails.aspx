@@ -1,510 +1,222 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OnlineExam.Master" AutoEventWireup="true" CodeBehind="StudentDetails.aspx.cs" Inherits="ExamOnline.StudentDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <%--  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet" />--%>
+    <style>
+        .floatRight {
+            float: right;
+        }
+
+        .backspace {
+            margin-left: 6px;
+        }
+
+        .largerCheckbox {
+            width: 30px;
+            height: 30px;
+        }
+
+        .mycheckBig input {
+            width: 25px;
+            height: 25px;
+        }
+
+        .mycheckSmall input {
+            width: 10px;
+            height: 10px;
+        }
+
+        .fontcolour {
+            color: red;
+        }
+
+        .checkedOption {
+            position: absolute;
+            left: 0;
+            width: 1rem;
+            height: 1.25rem;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Tables</h1>
+            <asp:HiddenField ID="hdMessage" runat="server" ClientIDMode="Static" />
+            <asp:HiddenField ID="hdStudentDetailsId" runat="server" Value="0" />
+            <h1 class="mt-4">StudentDetails</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item active">Tables</li>
+                <li class="breadcrumb-item active">Student Details</li>
             </ol>
-            <div class="card mb-4">
-                <div class="card-body">
-                    DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                    .
-                </div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    DataTable Example
+            <div class="card shadow mb-4" runat="server" id="tblStudentDetails">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Student Details</h6>
+                    <asp:Button ID="btnStudentDetails" runat="server" Text="Add New" class="btn btn-success btn-use floatRight" OnClick="btnStudentDetails_Click" />
                 </div>
                 <div class="card-body">
-                    <table id="datatablesSimple">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009/01/12</td>
-                                <td>$86,000</td>
-                            </tr>
-                            <tr>
-                                <td>Cedric Kelly</td>
-                                <td>Senior Javascript Developer</td>
-                                <td>Edinburgh</td>
-                                <td>22</td>
-                                <td>2012/03/29</td>
-                                <td>$433,060</td>
-                            </tr>
-                            <tr>
-                                <td>Airi Satou</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>33</td>
-                                <td>2008/11/28</td>
-                                <td>$162,700</td>
-                            </tr>
-                            <tr>
-                                <td>Brielle Williamson</td>
-                                <td>Integration Specialist</td>
-                                <td>New York</td>
-                                <td>61</td>
-                                <td>2012/12/02</td>
-                                <td>$372,000</td>
-                            </tr>
-                            <tr>
-                                <td>Herrod Chandler</td>
-                                <td>Sales Assistant</td>
-                                <td>San Francisco</td>
-                                <td>59</td>
-                                <td>2012/08/06</td>
-                                <td>$137,500</td>
-                            </tr>
-                            <tr>
-                                <td>Rhona Davidson</td>
-                                <td>Integration Specialist</td>
-                                <td>Tokyo</td>
-                                <td>55</td>
-                                <td>2010/10/14</td>
-                                <td>$327,900</td>
-                            </tr>
-                            <tr>
-                                <td>Colleen Hurst</td>
-                                <td>Javascript Developer</td>
-                                <td>San Francisco</td>
-                                <td>39</td>
-                                <td>2009/09/15</td>
-                                <td>$205,500</td>
-                            </tr>
-                            <tr>
-                                <td>Sonya Frost</td>
-                                <td>Software Engineer</td>
-                                <td>Edinburgh</td>
-                                <td>23</td>
-                                <td>2008/12/13</td>
-                                <td>$103,600</td>
-                            </tr>
-                            <tr>
-                                <td>Jena Gaines</td>
-                                <td>Office Manager</td>
-                                <td>London</td>
-                                <td>30</td>
-                                <td>2008/12/19</td>
-                                <td>$90,560</td>
-                            </tr>
-                            <tr>
-                                <td>Quinn Flynn</td>
-                                <td>Support Lead</td>
-                                <td>Edinburgh</td>
-                                <td>22</td>
-                                <td>2013/03/03</td>
-                                <td>$342,000</td>
-                            </tr>
-                            <tr>
-                                <td>Charde Marshall</td>
-                                <td>Regional Director</td>
-                                <td>San Francisco</td>
-                                <td>36</td>
-                                <td>2008/10/16</td>
-                                <td>$470,600</td>
-                            </tr>
-                            <tr>
-                                <td>Haley Kennedy</td>
-                                <td>Senior Marketing Designer</td>
-                                <td>London</td>
-                                <td>43</td>
-                                <td>2012/12/18</td>
-                                <td>$313,500</td>
-                            </tr>
-                            <tr>
-                                <td>Tatyana Fitzpatrick</td>
-                                <td>Regional Director</td>
-                                <td>London</td>
-                                <td>19</td>
-                                <td>2010/03/17</td>
-                                <td>$385,750</td>
-                            </tr>
-                            <tr>
-                                <td>Michael Silva</td>
-                                <td>Marketing Designer</td>
-                                <td>London</td>
-                                <td>66</td>
-                                <td>2012/11/27</td>
-                                <td>$198,500</td>
-                            </tr>
-                            <tr>
-                                <td>Paul Byrd</td>
-                                <td>Chief Financial Officer (CFO)</td>
-                                <td>New York</td>
-                                <td>64</td>
-                                <td>2010/06/09</td>
-                                <td>$725,000</td>
-                            </tr>
-                            <tr>
-                                <td>Gloria Little</td>
-                                <td>Systems Administrator</td>
-                                <td>New York</td>
-                                <td>59</td>
-                                <td>2009/04/10</td>
-                                <td>$237,500</td>
-                            </tr>
-                            <tr>
-                                <td>Bradley Greer</td>
-                                <td>Software Engineer</td>
-                                <td>London</td>
-                                <td>41</td>
-                                <td>2012/10/13</td>
-                                <td>$132,000</td>
-                            </tr>
-                            <tr>
-                                <td>Dai Rios</td>
-                                <td>Personnel Lead</td>
-                                <td>Edinburgh</td>
-                                <td>35</td>
-                                <td>2012/09/26</td>
-                                <td>$217,500</td>
-                            </tr>
-                            <tr>
-                                <td>Jenette Caldwell</td>
-                                <td>Development Lead</td>
-                                <td>New York</td>
-                                <td>30</td>
-                                <td>2011/09/03</td>
-                                <td>$345,000</td>
-                            </tr>
-                            <tr>
-                                <td>Yuri Berry</td>
-                                <td>Chief Marketing Officer (CMO)</td>
-                                <td>New York</td>
-                                <td>40</td>
-                                <td>2009/06/25</td>
-                                <td>$675,000</td>
-                            </tr>
-                            <tr>
-                                <td>Caesar Vance</td>
-                                <td>Pre-Sales Support</td>
-                                <td>New York</td>
-                                <td>21</td>
-                                <td>2011/12/12</td>
-                                <td>$106,450</td>
-                            </tr>
-                            <tr>
-                                <td>Doris Wilder</td>
-                                <td>Sales Assistant</td>
-                                <td>Sidney</td>
-                                <td>23</td>
-                                <td>2010/09/20</td>
-                                <td>$85,600</td>
-                            </tr>
-                            <tr>
-                                <td>Angelica Ramos</td>
-                                <td>Chief Executive Officer (CEO)</td>
-                                <td>London</td>
-                                <td>47</td>
-                                <td>2009/10/09</td>
-                                <td>$1,200,000</td>
-                            </tr>
-                            <tr>
-                                <td>Gavin Joyce</td>
-                                <td>Developer</td>
-                                <td>Edinburgh</td>
-                                <td>42</td>
-                                <td>2010/12/22</td>
-                                <td>$92,575</td>
-                            </tr>
-                            <tr>
-                                <td>Jennifer Chang</td>
-                                <td>Regional Director</td>
-                                <td>Singapore</td>
-                                <td>28</td>
-                                <td>2010/11/14</td>
-                                <td>$357,650</td>
-                            </tr>
-                            <tr>
-                                <td>Brenden Wagner</td>
-                                <td>Software Engineer</td>
-                                <td>San Francisco</td>
-                                <td>28</td>
-                                <td>2011/06/07</td>
-                                <td>$206,850</td>
-                            </tr>
-                            <tr>
-                                <td>Fiona Green</td>
-                                <td>Chief Operating Officer (COO)</td>
-                                <td>San Francisco</td>
-                                <td>48</td>
-                                <td>2010/03/11</td>
-                                <td>$850,000</td>
-                            </tr>
-                            <tr>
-                                <td>Shou Itou</td>
-                                <td>Regional Marketing</td>
-                                <td>Tokyo</td>
-                                <td>20</td>
-                                <td>2011/08/14</td>
-                                <td>$163,000</td>
-                            </tr>
-                            <tr>
-                                <td>Michelle House</td>
-                                <td>Integration Specialist</td>
-                                <td>Sidney</td>
-                                <td>37</td>
-                                <td>2011/06/02</td>
-                                <td>$95,400</td>
-                            </tr>
-                            <tr>
-                                <td>Suki Burks</td>
-                                <td>Developer</td>
-                                <td>London</td>
-                                <td>53</td>
-                                <td>2009/10/22</td>
-                                <td>$114,500</td>
-                            </tr>
-                            <tr>
-                                <td>Prescott Bartlett</td>
-                                <td>Technical Author</td>
-                                <td>London</td>
-                                <td>27</td>
-                                <td>2011/05/07</td>
-                                <td>$145,000</td>
-                            </tr>
-                            <tr>
-                                <td>Gavin Cortez</td>
-                                <td>Team Leader</td>
-                                <td>San Francisco</td>
-                                <td>22</td>
-                                <td>2008/10/26</td>
-                                <td>$235,500</td>
-                            </tr>
-                            <tr>
-                                <td>Martena Mccray</td>
-                                <td>Post-Sales support</td>
-                                <td>Edinburgh</td>
-                                <td>46</td>
-                                <td>2011/03/09</td>
-                                <td>$324,050</td>
-                            </tr>
-                            <tr>
-                                <td>Unity Butler</td>
-                                <td>Marketing Designer</td>
-                                <td>San Francisco</td>
-                                <td>47</td>
-                                <td>2009/12/09</td>
-                                <td>$85,675</td>
-                            </tr>
-                            <tr>
-                                <td>Howard Hatfield</td>
-                                <td>Office Manager</td>
-                                <td>San Francisco</td>
-                                <td>51</td>
-                                <td>2008/12/16</td>
-                                <td>$164,500</td>
-                            </tr>
-                            <tr>
-                                <td>Hope Fuentes</td>
-                                <td>Secretary</td>
-                                <td>San Francisco</td>
-                                <td>41</td>
-                                <td>2010/02/12</td>
-                                <td>$109,850</td>
-                            </tr>
-                            <tr>
-                                <td>Vivian Harrell</td>
-                                <td>Financial Controller</td>
-                                <td>San Francisco</td>
-                                <td>62</td>
-                                <td>2009/02/14</td>
-                                <td>$452,500</td>
-                            </tr>
-                            <tr>
-                                <td>Timothy Mooney</td>
-                                <td>Office Manager</td>
-                                <td>London</td>
-                                <td>37</td>
-                                <td>2008/12/11</td>
-                                <td>$136,200</td>
-                            </tr>
-                            <tr>
-                                <td>Jackson Bradshaw</td>
-                                <td>Director</td>
-                                <td>New York</td>
-                                <td>65</td>
-                                <td>2008/09/26</td>
-                                <td>$645,750</td>
-                            </tr>
-                            <tr>
-                                <td>Olivia Liang</td>
-                                <td>Support Engineer</td>
-                                <td>Singapore</td>
-                                <td>64</td>
-                                <td>2011/02/03</td>
-                                <td>$234,500</td>
-                            </tr>
-                            <tr>
-                                <td>Bruno Nash</td>
-                                <td>Software Engineer</td>
-                                <td>London</td>
-                                <td>38</td>
-                                <td>2011/05/03</td>
-                                <td>$163,500</td>
-                            </tr>
-                            <tr>
-                                <td>Sakura Yamamoto</td>
-                                <td>Support Engineer</td>
-                                <td>Tokyo</td>
-                                <td>37</td>
-                                <td>2009/08/19</td>
-                                <td>$139,575</td>
-                            </tr>
-                            <tr>
-                                <td>Thor Walton</td>
-                                <td>Developer</td>
-                                <td>New York</td>
-                                <td>61</td>
-                                <td>2013/08/11</td>
-                                <td>$98,540</td>
-                            </tr>
-                            <tr>
-                                <td>Finn Camacho</td>
-                                <td>Support Engineer</td>
-                                <td>San Francisco</td>
-                                <td>47</td>
-                                <td>2009/07/07</td>
-                                <td>$87,500</td>
-                            </tr>
-                            <tr>
-                                <td>Serge Baldwin</td>
-                                <td>Data Coordinator</td>
-                                <td>Singapore</td>
-                                <td>64</td>
-                                <td>2012/04/09</td>
-                                <td>$138,575</td>
-                            </tr>
-                            <tr>
-                                <td>Zenaida Frank</td>
-                                <td>Software Engineer</td>
-                                <td>New York</td>
-                                <td>63</td>
-                                <td>2010/01/04</td>
-                                <td>$125,250</td>
-                            </tr>
-                            <tr>
-                                <td>Zorita Serrano</td>
-                                <td>Software Engineer</td>
-                                <td>San Francisco</td>
-                                <td>56</td>
-                                <td>2012/06/01</td>
-                                <td>$115,000</td>
-                            </tr>
-                            <tr>
-                                <td>Jennifer Acosta</td>
-                                <td>Junior Javascript Developer</td>
-                                <td>Edinburgh</td>
-                                <td>43</td>
-                                <td>2013/02/01</td>
-                                <td>$75,650</td>
-                            </tr>
-                            <tr>
-                                <td>Cara Stevens</td>
-                                <td>Sales Assistant</td>
-                                <td>New York</td>
-                                <td>46</td>
-                                <td>2011/12/06</td>
-                                <td>$145,600</td>
-                            </tr>
-                            <tr>
-                                <td>Hermione Butler</td>
-                                <td>Regional Director</td>
-                                <td>London</td>
-                                <td>47</td>
-                                <td>2011/03/21</td>
-                                <td>$356,250</td>
-                            </tr>
-                            <tr>
-                                <td>Lael Greer</td>
-                                <td>Systems Administrator</td>
-                                <td>London</td>
-                                <td>21</td>
-                                <td>2009/02/27</td>
-                                <td>$103,500</td>
-                            </tr>
-                            <tr>
-                                <td>Jonas Alexander</td>
-                                <td>Developer</td>
-                                <td>San Francisco</td>
-                                <td>30</td>
-                                <td>2010/07/14</td>
-                                <td>$86,500</td>
-                            </tr>
-                            <tr>
-                                <td>Shad Decker</td>
-                                <td>Regional Director</td>
-                                <td>Edinburgh</td>
-                                <td>51</td>
-                                <td>2008/11/13</td>
-                                <td>$183,000</td>
-                            </tr>
-                            <tr>
-                                <td>Michael Bruce</td>
-                                <td>Javascript Developer</td>
-                                <td>Singapore</td>
-                                <td>29</td>
-                                <td>2011/06/27</td>
-                                <td>$183,000</td>
-                            </tr>
-                            <tr>
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>27</td>
-                                <td>2011/01/25</td>
-                                <td>$112,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <asp:Repeater ID="lstStudentDetails" runat="server" OnItemCommand="lstStudentDetails_ItemCommand">
+                            <HeaderTemplate>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Mobile Number</th>
+                                           <%-- <th>Password</th>--%>
+                                            <th>Address</th>
+                                            <th>Email Address</th>
+                                            <th>City</th>
+                                            <th>State</th>
+                                            <th>bVerified</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblstudentName" runat="server" ClientIDMode="Static" Text='<%#Eval("Name")%>'></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblMobileNumber" runat="server" ClientIDMode="Static" Text='<%#Eval("MobileNumber")%>'></asp:Label>
+                                    </td>
+                                    <%--<td>
+                                        <asp:Label ID="lblPassword" runat="server" ClientIDMode="Static" Text='<%#Eval("Password")%>'></asp:Label>
+                                    </td>--%>
+                                    <td>
+                                        <asp:Label ID="lblAddress" runat="server" ClientIDMode="Static" Text='<%#Eval("Address")%>'></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblEmailAddress" runat="server" ClientIDMode="Static" Text='<%#Eval("EmailAddress")%>'></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblCity" runat="server" ClientIDMode="Static" Text='<%#Eval("City")%>'></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblState" runat="server" ClientIDMode="Static" Text='<%#Eval("State")%>'></asp:Label>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-<%# Convert.ToString(Eval("Verify"))=="True" ? "info" : "secondary"  %> btn-icon-split" style="color: white;">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </span>
+                                            <span class="text">
+                                                <asp:Label ID="lblVerify" runat="server" ClientIDMode="Static" Text='<%# Convert.ToString(Eval("Verify"))=="True" ? "Active":"InActive" %>'></asp:Label></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-<%# Convert.ToString(Eval("Status"))=="True" ? "info" : "secondary"  %> btn-icon-split" style="color: white;">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </span>
+                                            <span class="text">
+                                                <asp:Label ID="LblStatus" runat="server" ClientIDMode="Static" Text='<%# Convert.ToString(Eval("Status"))=="True" ? "Active":"InActive" %>'></asp:Label></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <asp:HiddenField ID="hdnId" runat="server" Value='<%#Eval("StudentDetailsId") %>' />
+                                        <asp:LinkButton ID="lnkEdit" runat="server" CommandName="CatEdit" CssClass="btn btn-success btn-circle btn-sm" CommandArgument='<%#Eval("StudentDetailsId") %>'><i class="fas fa-edit"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="CatDelete" CssClass="btn btn-danger btn-circle btn-sm" CommandArgument='<%#Eval("StudentDetailsId") %>' OnClientClick="return confirm('Are you sure you want delete');"><i class="fas fa-trash"></i></asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </tbody>
+                                   <%-- <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot>--%>
+                            </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
             </div>
+
+            <div class="card shadow mb-4" runat="server" id="frmStudentDetails">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Add Student Details</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtStudentName" runat="server" class="form-control form-control-user" placeholder="Student Name" MaxLength="100"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="fontcolour" ControlToValidate="txtStudentName" runat="server" ErrorMessage="Please Enter Student Name." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtMobileNumber" runat="server" class="form-control form-control-user" placeholder="Mobile Number" MaxLength="100"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="fontcolour" ControlToValidate="txtMobileNumber" runat="server" ErrorMessage="Please Enter Mobile Number." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtAddress" runat="server" class="form-control form-control-user" placeholder="Address" MaxLength="100"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="fontcolour" ControlToValidate="txtAddress" runat="server" ErrorMessage="Please Enter Address." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtEmailAddress" runat="server" class="form-control form-control-user" placeholder="Email Address" MaxLength="100"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" CssClass="fontcolour" ControlToValidate="txtEmailAddress" runat="server" ErrorMessage="Please Enter Email Address." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtCity" runat="server" class="form-control form-control-user" placeholder="City" MaxLength="100"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" CssClass="fontcolour" ControlToValidate="txtCity" runat="server" ErrorMessage="Please Enter City." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtState" runat="server" class="form-control form-control-user" placeholder="State" MaxLength="100"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" CssClass="fontcolour" ControlToValidate="txtState" runat="server" ErrorMessage="Please Enter State." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <%--  <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtbVerified" runat="server" class="form-control form-control-user" placeholder="bVerified" MaxLength="100"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" CssClass="fontcolour" ControlToValidate="txtbVerified" runat="server" ErrorMessage="Please Enter bVerified." ValidationGroup="save"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>--%>
+                    <div class="form-group">
+                        <%--<div class="custom-control custom-checkbox large">
+                            <span class="backspace"></span>
+                            <asp:CheckBox ID="chkbVerified" runat="server" CssClass="checkedOption" ClientIDMode="Static" />
+                            <label class="" for="chkbVerified">Active</label>
+                        </div>--%>
+                        <div class="custom-control custom-checkbox large">
+                            <span class="backspace"></span>
+                            <asp:CheckBox ID="chkStatus" runat="server" CssClass="custom-control-input" ClientIDMode="Static" />
+                            <label class="custom-control-label" for="chkStatus">Active</label>
+                        </div>
+                    </div>
+                    <asp:Button ID="btnSave" runat="server" Text="Save" class="btn btn-success btn-use floatRight" OnClick="btnSave_Click" Style="margin-left: 10px;" ValidationGroup="save" />
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-danger btn-use floatRight" OnClick="btnCancel_Click" />
+                </div>
+            </div>
+
         </div>
+        <!-- Page level plugins -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/scripts/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="/scripts/datatables-simple-demo.js"></script>
+        <%--<script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>--%>
+        <script type="text/javascript">
+
+
+            $(document).ready(function () {
+                $('#dataTable').DataTable({
+                    "pagingType": "full_numbers"
+                });
+                // $('#dataTa').DataTable();
+            });
+        </script>
     </main>
 </asp:Content>

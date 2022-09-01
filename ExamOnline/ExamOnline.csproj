@@ -130,6 +130,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="OnlineExam.Master" />
+    <Content Include="QuestionPaperSectionMapping.aspx" />
+    <Content Include="Student\Student.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -158,6 +160,15 @@
     <Content Include="scripts\scripts.js" />
     <Content Include="SectionMaster.aspx" />
     <Content Include="StudentDetails.aspx" />
+    <Content Include="Student\Capture.PNG" />
+    <Content Include="Student\new 7.html" />
+    <Content Include="Student\OnlineExamPage.aspx" />
+    <Content Include="Student\questions-sprite.png" />
+    <Content Include="Student\StudentDashBoard.aspx" />
+    <Content Include="Student\StudentExam.aspx" />
+    <Content Include="Student\StudentLogin.aspx" />
+    <Content Include="Student\StudentRegistration.aspx" />
+    <Content Include="Student\studentVerification.aspx" />
     <Content Include="verification.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -200,6 +211,13 @@
     <Compile Include="QuestionPaperMaster.aspx.designer.cs">
       <DependentUpon>QuestionPaperMaster.aspx</DependentUpon>
     </Compile>
+    <Compile Include="QuestionPaperSectionMapping.aspx.cs">
+      <DependentUpon>QuestionPaperSectionMapping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionPaperSectionMapping.aspx.designer.cs">
+      <DependentUpon>QuestionPaperSectionMapping.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationAdmin.aspx.cs">
       <DependentUpon>RegistrationAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +245,55 @@
     </Compile>
     <Compile Include="StudentDetails.aspx.designer.cs">
       <DependentUpon>StudentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\OnlineExamPage.aspx.cs">
+      <DependentUpon>OnlineExamPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\OnlineExamPage.aspx.designer.cs">
+      <DependentUpon>OnlineExamPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Student.Master.cs">
+      <DependentUpon>Student.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Student.Master.designer.cs">
+      <DependentUpon>Student.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentDashBoard.aspx.cs">
+      <DependentUpon>StudentDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\StudentDashBoard.aspx.designer.cs">
+      <DependentUpon>StudentDashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentExam.aspx.cs">
+      <DependentUpon>StudentExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\StudentExam.aspx.designer.cs">
+      <DependentUpon>StudentExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentLogin.aspx.cs">
+      <DependentUpon>StudentLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\StudentLogin.aspx.designer.cs">
+      <DependentUpon>StudentLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentRegistration.aspx.cs">
+      <DependentUpon>StudentRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\StudentRegistration.aspx.designer.cs">
+      <DependentUpon>StudentRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\studentVerification.aspx.cs">
+      <DependentUpon>studentVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\studentVerification.aspx.designer.cs">
+      <DependentUpon>studentVerification.aspx</DependentUpon>
     </Compile>
     <Compile Include="verification.aspx.cs">
       <DependentUpon>verification.aspx</DependentUpon>

@@ -17,5 +17,7 @@ namespace EntityLayer
         public DateTime LastLogin { get; set; }
         public string EmailAddress { get; set; }
         public bool bVerified { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
     }
 }

@@ -42,10 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDL.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="CommonControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserDL.cs" />
+    <Compile Include="StudentDL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\ELHelper\ELHelper.csproj">
