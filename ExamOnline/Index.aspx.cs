@@ -40,9 +40,10 @@ namespace ExamOnline
                         string str = "LoginSuccessfully";
                         Page.ClientScript.RegisterStartupScript(GetType(), "MyKey", "ShowMessageForm();", true);
                         lblMessage.Text = str;
-                        Session["UserId"] = ds.Tables[0].Rows[0][0];
+                        Session["UserId"] = ds.Tables[0].Rows[0]["UserId"];
                         Session["Name"] = ds.Tables[0].Rows[0]["Name"];
                         Session["UserName"] = ds.Tables[0].Rows[0]["UserName"];
+                        Session["Password"] = ds.Tables[0].Rows[0]["Password"];
                         Response.Redirect("StudentDetails.aspx");
                     }
                 }

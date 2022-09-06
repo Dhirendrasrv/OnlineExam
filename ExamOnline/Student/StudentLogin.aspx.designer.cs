@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExamOnline.Student
-{
-
-
-    public partial class StudentLogin
-    {
-
+namespace ExamOnline.Student {
+    
+    
+    public partial class StudentLogin {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace ExamOnline.Student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// txtEmail control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace ExamOnline.Student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-
+        
         /// <summary>
         /// txtPassword control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace ExamOnline.Student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
-
+        
         /// <summary>
         /// btnLogin control.
         /// </summary>
@@ -49,16 +47,16 @@ namespace ExamOnline.Student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
-
+        
         /// <summary>
-        /// btnForgetPassword control.
+        /// lblMess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnForgetPassword;
-
+        protected global::System.Web.UI.WebControls.Label lblMess;
+        
         /// <summary>
         /// lblMessage control.
         /// </summary>
@@ -67,5 +65,14 @@ namespace ExamOnline.Student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
+        
+        /// <summary>
+        /// btnOk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOk;
     }
 }

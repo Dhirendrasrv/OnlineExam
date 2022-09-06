@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExamOnline.Student
-{
-
-
-    public partial class StudentExam
-    {
-
+namespace ExamOnline.Student {
+    
+    
+    public partial class StudentExam {
+        
         /// <summary>
         /// rptExam control.
         /// </summary>

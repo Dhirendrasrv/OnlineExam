@@ -19,5 +19,6 @@ namespace EntityLayer
         public bool bVerified { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

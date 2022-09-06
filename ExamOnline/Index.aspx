@@ -4,76 +4,65 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <link href="~/css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/jquery-toast/dist/jquery.toast.min.css">
 </head>
 
-<body class="bg-primary">
+<body class="bg-gradient-primary">
     <form id="form1" runat="server">
         <asp:HiddenField ID="hdMessage" runat="server" ClientIDMode="Static" />
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header">
-                                        <h3 class="text-center font-weight-light my-4">Login</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <%--<form>--%>
-                                        <div class="form-floating mb-3">
-                                            <asp:TextBox ID="txtUserName" runat="server" class="form-control" type="Email" placeholder="Email address"></asp:TextBox>
-                                            <label for="inputEmail">Email address</label>
+        <div class="container">
+
+            <!-- Outer Row -->
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-9">
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row" style="min-height: 350px;">
+                                <div class="col-lg-8 d-none d-lg-block bg-login-image"></div>
+                                <div class="col-lg-4">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                         </div>
-                                        <div class="form-floating mb-3">
-                                            <asp:TextBox ID="txtpassword" runat="server" class="form-control" type="password" placeholder="Password"></asp:TextBox>
-                                            <label for="inputPassword">Password</label>
+                                        <div class="user">
+                                            <div class="form-group">
+                                                <asp:TextBox ID="txtUserName" required runat="server" type="email" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Email Address..."></asp:TextBox>
+                                            </div>
+                                            <div class="form-group">
+                                                <asp:TextBox ID="txtpassword" required runat="server" type="password" class="form-control form-control-user" placeholder="Password"></asp:TextBox>
+                                            </div>
+                                            <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-primary btn-user btn-block" OnClick="btnLogin_Click" />
                                         </div>
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                            <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <hr>
+                                        <div class="text-center">
                                             <a class="small" href="ForgotPassword.aspx">Forgot Password?</a>
-                                            <%--<a class="btn btn-primary" href="index.html">Login</a>--%>
-                                            <asp:Button ID="btnLogin" runat="server" class="btn btn-primary" Text="Login" OnClick="btnLogin_Click" />
                                         </div>
-                                        <%--</form>--%>
-                                    </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="RegistrationAdmin.aspx">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
+                                <div class="col-lg-2"></div>
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; SRV Software Solutions 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                               
-                            <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                </div>
             </div>
         </div>
         <div class="modal fade" id="MessageModel" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Message</h4>
@@ -82,23 +71,76 @@
                     </div>
                     <div class="modal-body">
                         <p>
-                            <asp:Label ID="lblMessage" runat="server"></asp:Label>
-                        </p>
+                            <asp:Label ID="lblMessage" runat="server"></asp:Label></p>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="btnOk" runat="server" Text="OK" class="btn btn-success" OnClick="btnOk_Click" />
+                        <asp:Button ID="btnOk" runat="server" Text="OK" class="btn" OnClick="btnOk_Click" />
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/scripts/scripts.js"></script>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+        <!-- notifications -->
+        <script src="plugins/jquery-toast/dist/jquery.toast.min.js"></script>
+        <script src="plugins/jquery-toast/dist/toast.js"></script>
         <script type="text/javascript">
             function ShowMessageForm() {
                 $('#MessageModel').modal('show');
             }
+
+            $(document).ready(function () {
+                /* remove the relative spam involving inputs disabled */
+                $('input[type="checkbox"]').parent('.custom-control-input').each(function () {
+                    var $this = $(this);
+                    var cssClass = $this.attr('class');
+                    $this.children('input[type="checkbox"]').addClass(cssClass).unwrap().parent('label[for],span').first().addClass('custom-control-input');
+                });
+            });
+
+
+            function Successmsg() {
+                var str = $('#hdMessage').val();
+                var msgHead = str.split("|")[0];
+                var msg = str.split("|")[1];
+                $.toast({
+                    heading: msgHead,
+                    text: msg,
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'success',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+
+            }
+
+            function Errormsg() {
+                var str = $('#hdMessage').val();
+                var msgHead = str.split("|")[0];
+                var msg = str.split("|")[1];
+                $.toast({
+                    heading: msgHead,
+                    text: msg,
+                    position: 'top-center',
+                    loaderBg: '#ff6849',
+                    icon: 'error',
+                    hideAfter: 3500
+                });
+            }
+
         </script>
 
     </form>
+
+
 </body>
 </html>

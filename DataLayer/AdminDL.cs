@@ -130,6 +130,20 @@ namespace DataLayer
                 throw ex;
             }
         }
+
+        public int AdminChangePassword(AdminCls admin)
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[3];
+            parameter[0] = new LbSprocParameter("id", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, admin.idAdmin);
+            parameter[1] = new LbSprocParameter("Password", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, admin.ConfirmPassword);
+            parameter[2] = new LbSprocParameter("CurrentPassword", DbType.String, LbSprocParameter.LbParameterDirection.INPUT, admin.Password);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+            int Response = 0;
+            Response = Convert.ToInt32(elhelper.ExecuteScalar("sp_AdminChangePassword", parameter));
+            return Response;
+        }
+
         public DataSet GetAllSectionMaster()
         {
             DataSet ds = new DataSet();
@@ -339,6 +353,7 @@ namespace DataLayer
             objResponse.sMsg = Convert.IsDBNull(elhelper.GetParameterValue("@sMsg")) ? "" : Convert.ToString(elhelper.GetParameterValue("@sMsg"));
             return objResponse;
         }
+
         public MessageResponse SetQuePprSectionMapping(QuePprSectionMapping question)
         {
             LbSprocParameter[] parameter = new LbSprocParameter[7];

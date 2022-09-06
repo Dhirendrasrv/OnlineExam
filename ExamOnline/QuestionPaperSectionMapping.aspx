@@ -1,8 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OnlineExam.Master" AutoEventWireup="true" CodeBehind="QuestionPaperSectionMapping.aspx.cs" Inherits="ExamOnline.QuestionPaperSectionMapping" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <%--  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="~/css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>--%>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <%--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">--%>
+    <%--<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">--%>
     <style>
         .floatRight {
             float: right;
@@ -33,7 +37,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+
     <main>
         <div class="container-fluid px-4">
             <asp:HiddenField ID="hdMessage" runat="server" ClientIDMode="Static" />
@@ -46,11 +50,11 @@
             <div class="card shadow mb-4" runat="server" id="tblQuestionPaperSectionMapping">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Question Paper Section Mapping</h6>
-                    <asp:Button ID="btnQuestionPaperSectionMapping" runat="server" Text="Add New" class="btn btn-success btn-use floatRight" onClick="btnQuestionPaperSectionMapping_Click" />
+                    <asp:Button ID="btnQuestionPaperSectionMapping" runat="server" Text="Add New" class="btn btn-success btn-use floatRight" OnClick="btnQuestionPaperSectionMapping_Click" />
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <asp:Repeater ID="rptQuestionPaperSectionMapping" runat="server" onItemCommand="rptQuestionPaperSectionMapping_ItemCommand">
+                        <asp:Repeater ID="rptQuestionPaperSectionMapping" runat="server" OnItemCommand="rptQuestionPaperSectionMapping_ItemCommand">
                             <HeaderTemplate>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -110,17 +114,17 @@
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="ddlSection" class="form-label">Section</label>
-                            <asp:DropDownList ID="ddlSection" runat="server" class="form-control form-select" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlSection" runat="server" class="form-control form-select"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" CssClass="fontcolour" ControlToValidate="ddlSection" runat="server" ErrorMessage="Please select a section." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="ddlQuestion" class="form-label">Question Name</label>
-                            <asp:DropDownList ID="ddlQuestion" runat="server" class="form-control form-select" ></asp:DropDownList>
+                            <asp:DropDownList ID="ddlQuestion" runat="server" class="form-control form-select"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="fontcolour" ControlToValidate="ddlQuestion" runat="server" ErrorMessage="Please select a question name." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
-                    </div>                   
+                    </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="txtNumberOfQuestion" class="form-label">No. Of Question</label>
@@ -142,17 +146,21 @@
             </div>
 
         </div>
-        <!-- Page level plugins -->
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    </main>
+    <!-- Page level plugins -->
+    <%-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/scripts/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="/scripts/datatables-simple-demo.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#dataTable').DataTable({
-                    "pagingType": "full_numbers"
-                });
+        <script src="/scripts/datatables-simple-demo.js"></script>--%>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pagingType": "full_numbers"
             });
-        </script>
-    </main>
+        });
+    </script>
+
 </asp:Content>

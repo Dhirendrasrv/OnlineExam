@@ -1,13 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OnlineExam.Master" AutoEventWireup="true" CodeBehind="QuestionMaster.aspx.cs" Inherits="ExamOnline.QuestionMaster" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-       <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <%--<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="~/css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-     <%--<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">--%>
-    <%--<link href="~/css/dataTables.bootstrap4.min.css" rel="stylesheet" />--%>
-    <%--<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />--%>
-    <%--<link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet" />--%>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>--%>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <%--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">--%>
+    <%--<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">--%>
     <style>
         .floatRight {
             float: right;
@@ -42,8 +41,6 @@
             width: 1rem;
             height: 1.25rem;
         }
-
-
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -157,8 +154,9 @@
                             <asp:TextBox ID="txtOption1" runat="server" class="form-control form-control-user" placeholder="Enter an option1" MaxLength="500"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="fontcolour" ControlToValidate="txtOption1" runat="server" ErrorMessage="Please enter an option1." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
+                        <div class="col-sm-6 custom-control custom-checkbox large" style="line-height: 6.4em; margin-top: 38px;">
                             <asp:CheckBox ID="chkOption1" runat="server" CssClass="custom-control-input" />
+                            <label class="custom-control-label" for="chkOption1"></label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -167,8 +165,9 @@
                             <asp:TextBox ID="txtOption2" runat="server" class="form-control form-control-user" placeholder="Enter an option2" MaxLength="500"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="fontcolour" ControlToValidate="txtOption2" runat="server" ErrorMessage="Please enter an option2." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
+                       <div class="col-sm-6 custom-control custom-checkbox large" style="line-height: 6.4em; margin-top: 38px;">
                             <asp:CheckBox ID="chkOption2" runat="server" CssClass="custom-control-input" />
+                            <label class="custom-control-label" for="chkOption2"></label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -177,8 +176,9 @@
                             <asp:TextBox ID="txtOption3" runat="server" class="form-control form-control-user" placeholder="Enter an option3" MaxLength="500"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" CssClass="fontcolour" ControlToValidate="txtOption3" runat="server" ErrorMessage="Please enter an option3." ValidationGroup="save"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
+                        <div class="col-sm-6 custom-control custom-checkbox large" style="line-height: 6.4em; margin-top: 38px;">
                             <asp:CheckBox ID="chkOption3" runat="server" CssClass="custom-control-input" />
+                            <label class="custom-control-label" for="chkOption3"></label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -188,8 +188,9 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" CssClass="fontcolour" ControlToValidate="txtOption4" runat="server" ErrorMessage="Please enter an option4." ValidationGroup="save"></asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0" style="line-height: 6.4em;">
+                        <div class="col-sm-6 custom-control custom-checkbox large" style="line-height: 6.4em; margin-top: 38px;">
                             <asp:CheckBox ID="chkOption4" runat="server" CssClass="custom-control-input" />
+                            <label class="custom-control-label" for="chkOption4"></label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -205,20 +206,21 @@
             </div>
 
         </div>
-        <!-- Page level plugins -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    </main>
+    <!-- Page level plugins -->
+    <%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/scripts/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="/scripts/datatables-simple-demo.js"></script>
-       <%-- <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>--%>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#dataTable').DataTable({
-                    "pagingType": "full_numbers"
-                });
+        <script src="/scripts/datatables-simple-demo.js"></script>--%>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pagingType": "full_numbers"
             });
-        </script>
-    </main>
+        });
+    </script>
+
 </asp:Content>

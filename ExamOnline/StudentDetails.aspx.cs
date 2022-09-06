@@ -14,7 +14,36 @@ namespace ExamOnline
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool isSessionUpdate = false;
             System.Web.UI.WebControls.CheckBox.DisabledCssClass = null;
+            if (Session["UserId"] != null)
+            {
+                //HttpCookie reqCookies = Request.Cookies["OnlineExamStudentInfo"];
+                //if (reqCookies != null)
+                //{
+                //    string rdata = reqCookies["Studata"].ToString();
+                //    string dData = CommanClasses.Decrypt(rdata);
+                //    string[] words = dData.Split('~');
+                //    if (words.Count() == 2)
+                //    {
+                //        int StudentId = Convert.ToInt32(words[0]);
+                //        string StudentName = words[1];
+
+                //        Session["StudentId"] = StudentId;
+                //        Session["StudentName"] = StudentName;
+                //        isSessionUpdate = true;
+                //        //Response.Redirect(Request.RawUrl);
+                //    }
+                //}
+                //else
+                //{
+                //    Response.Redirect("StudentLogin.aspx");
+                //}
+            }
+            else
+            {
+                Response.Redirect("Index.aspx");
+            }
             if (!IsPostBack)
             {
                 GetStudentDetails();

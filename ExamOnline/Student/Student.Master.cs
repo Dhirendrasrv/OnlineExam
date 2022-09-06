@@ -13,5 +13,14 @@ namespace ExamOnline.Student
         {
 
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Session.Clear();
+            Response.Cookies.Clear();
+            Response.Cookies["OnlineExamStudentInfo"].Expires = DateTime.Now.AddDays(-1); 
+            Response.Redirect("StudentLogin.aspx");
+        }
     }
 }

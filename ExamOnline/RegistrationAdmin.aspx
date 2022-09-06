@@ -4,87 +4,96 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <link href="~/css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Register</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
-<body class="bg-primary">
+<body class="bg-gradient-primary">
     <form id="form1" runat="server">
-    <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
-                                    <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <asp:TextBox ID="txtName" runat="server" class="form-control" type="text" placeholder="Name"></asp:TextBox>
-                                                        <label for="inputFirstName">Name</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <asp:TextBox ID="txtUsername" runat="server" class="form-control" type="text" placeholder="Username"></asp:TextBox>
-                                                        <label for="inputLastName">Username</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <asp:TextBox ID="txtEmail" runat="server" class="form-control" type="Email" placeholder="Email address"></asp:TextBox>
-                                                <label for="inputEmail">Email address</label>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <asp:TextBox ID="txtPassword" runat="server" class="form-control" type="password" placeholder="Password"></asp:TextBox>
-                                                        <label for="inputPassword">Create a password</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <asp:TextBox ID="txtConfirmPassword" runat="server" class="form-control" type="password" placeholder="Confirm Password"></asp:TextBox>
-                                                        <label for="inputPasswordConfirm">Confirm Password</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-4 mb-0">
-                                                <div class="d-grid">
-                                                    <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary btn-block" Text="Create Account" OnClick="btnSubmit_Click" />
-                                                </div>
-                                            </div>
+        <div class="container">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                        <div class="col-lg-7">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <asp:TextBox ID="txtName" runat="server" class="form-control" type="text" placeholder="Name"></asp:TextBox>
+                                       <%-- <label for="inputFirstName">Name</label>--%>
                                     </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                                    <div class="col-md-6">
+                                        <asp:TextBox ID="txtUsername" runat="server" class="form-control" type="text" placeholder="Username"></asp:TextBox>
+                                        <%--<label for="inputLastName">Username</label>--%>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <asp:TextBox ID="txtEmail" runat="server" class="form-control" type="Email" placeholder="Email address"></asp:TextBox>
+                                    <%--<label for="inputEmail">Email address</label>--%>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <asp:TextBox ID="txtPassword" runat="server" class="form-control" type="password" placeholder="Password"></asp:TextBox>
+                                        <%--<label for="inputPassword">Create a password</label>--%>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <asp:TextBox ID="txtConfirmPassword" runat="server" class="form-control" type="password" placeholder="Confirm Password"></asp:TextBox>
+                                        <%--<label for="inputPasswordConfirm">Confirm Password</label>--%>
+                                    </div>
+                                </div>
+                                <div class="mt-4 mb-0">
+                                    <div class="d-grid">
+                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary btn-block" Text="Create Account" OnClick="btnSubmit_Click" />
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <a class="small" href="ForgotPassword.aspx">Forgot Password?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" href="Index.aspx">Have an account? Go to login</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; SRV Software Solutions 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                </div>
+        </div>
             </div>
         </div>
+
+       <%-- <div id="layoutAuthentication_footer">
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; SRV Software Solutions 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                               
+                                <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>--%>
+
         <div class="modal fade" id="MessageModel" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -104,8 +113,15 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/scripts/scripts.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
         <script type="text/javascript">
             function ShowMessageForm() {
                 $('#MessageModel').modal('show');

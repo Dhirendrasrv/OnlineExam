@@ -37,7 +37,7 @@ namespace ExamOnline.Student
                 string sMessage = "Hi " + txtName.Text + ",<br>";
                 sMessage += "<a href='" + sUrl + "'>" + sUrl + "</a>";
                 CommanClasses.SendEmail(txtEmail.Text, "Verification Message", sMessage );
-                Response.Redirect("MainDashBoard.aspx");
+                Response.Redirect("StudentDashBoard.aspx");
             }
             //DL_HotalManagment objHotalManagment = new DL_HotalManagment();
             //AdminCls admin = new AdminCls();
@@ -104,6 +104,11 @@ namespace ExamOnline.Student
             //{
             //    lbError.Text = "Invalid Credentials.Enter a valid credentials";
             //}
+        }
+
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

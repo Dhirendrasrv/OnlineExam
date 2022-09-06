@@ -21,7 +21,7 @@ namespace ExamOnline.Student
                 int isVerified = studentDL.VerifyStudent(id);
                 if (isVerified == 1)
                 {
-                    lblMessage.Text = "Sutdent Verified successfully";
+                    lblMessage.Text = "Student Verified successfully";
                 }
                 else
                 {

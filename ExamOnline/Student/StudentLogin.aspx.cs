@@ -19,22 +19,22 @@ namespace ExamOnline.Student
                 Session.Clear();
             }
         }
-        protected void btnForgetPassword_Click(object sender, EventArgs e)
-        {
-        }
+        //protected void btnForgetPassword_Click(object sender, EventArgs e)
+        //{
+        //}
             
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             EntityLayer.StudentDetails studentDetails = new EntityLayer.StudentDetails();
             studentDetails.EmailAddress = txtEmail.Text;
-            studentDetails.Password = CommanClasses.Encrypt(txtPassword.Text.Trim());
+            studentDetails.Password = CommanClasses.SHA256Encryption(txtPassword.Text.Trim());
             StudentDL studentDL = new StudentDL();
             DataSet ds = studentDL.LoginStudent(studentDetails);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 if (ds.Tables[0].Rows[0]["nError"].ToString() != "0")
                 {
-                    lblMessage.Text = "Please enter valid detail.";
+                    lblMess.Text = "Please enter valid detail.";
                 }
                 else
                 {
@@ -42,6 +42,7 @@ namespace ExamOnline.Student
                     {
                         Session["StudentId"] = ds.Tables[1].Rows[0]["StudentDetailsId"];
                         Session["StudentName"] = ds.Tables[1].Rows[0]["Name"];
+                        Session["Password"] = ds.Tables[1].Rows[0]["Password"];
                         HttpCookie userInfo = new HttpCookie("OnlineExamStudentInfo");
                         string str = Convert.ToString(Session["StudentId"]) + "~" + Convert.ToString(Session["StudentName"]);
                         userInfo["Studata"] = CommanClasses.Encrypt(str);
@@ -52,10 +53,15 @@ namespace ExamOnline.Student
                     }
                     else
                     {
-                        lblMessage.Text = "Please verified your email.";
+                        lblMess.Text = "Please verified your email.";
                     }
                 }
             }
+        }
+
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
