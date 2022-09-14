@@ -125,6 +125,7 @@
     <Content Include="ChangePassword.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\dataTables.bootstrap4.min.css" />
+    <Content Include="Demo.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Images\654739closings_30.PNG" />
     <Content Include="Images\Banners\204617newFees.PNG" />
@@ -214,6 +215,7 @@
     <Content Include="plugins\jquery-toast\dist\jquery.toast.min.js" />
     <Content Include="plugins\jquery-toast\dist\toast.js" />
     <Content Include="QuestionPaperSectionMapping.aspx" />
+    <Content Include="StartExam.aspx" />
     <Content Include="Student\SChangedPassword.aspx" />
     <Content Include="Student\Student.Master" />
     <Content Include="scss\navs\_global.scss" />
@@ -2101,6 +2103,13 @@
     <Compile Include="ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Demo.aspx.cs">
+      <DependentUpon>Demo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demo.aspx.designer.cs">
+      <DependentUpon>Demo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2164,6 +2173,13 @@
     </Compile>
     <Compile Include="SectionMaster.aspx.designer.cs">
       <DependentUpon>SectionMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StartExam.aspx.cs">
+      <DependentUpon>StartExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StartExam.aspx.designer.cs">
+      <DependentUpon>StartExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="StudentDetails.aspx.cs">
       <DependentUpon>StudentDetails.aspx</DependentUpon>

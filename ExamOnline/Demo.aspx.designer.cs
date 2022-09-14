@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExamOnline.Student {
+namespace ExamOnline {
     
     
-    public partial class OnlineExamPage {
+    public partial class Demo {
         
         /// <summary>
         /// form1 control.
@@ -20,15 +20,6 @@ namespace ExamOnline.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// rptExamPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptExamPage;
         
         /// <summary>
         /// lblQuestion control.
@@ -65,5 +56,14 @@ namespace ExamOnline.Student {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPrevious;
+        
+        /// <summary>
+        /// hdnQuestionId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnQuestionId;
     }
 }

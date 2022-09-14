@@ -389,5 +389,22 @@ namespace DataLayer
             return ds;
         }
 
+        public DataSet GetQuestions()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                LbSprocParameter[] parameter;
+                parameter = new LbSprocParameter[0];
+                ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+                ds = elhelper.ExecuteDataset("sp_GetQuestions", parameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
     }
 }

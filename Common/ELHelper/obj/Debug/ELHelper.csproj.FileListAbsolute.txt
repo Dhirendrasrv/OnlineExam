@@ -183,3 +183,10 @@ E:\OnlineExam\OnlineExam\Common\ELHelper\bin\Debug\ExceptionManager.pdb
 E:\OnlineExam\OnlineExam\Common\ELHelper\obj\Debug\ELHelper.csprojResolveAssemblyReference.cache
 E:\OnlineExam\OnlineExam\Common\ELHelper\obj\Debug\ELHelper.dll
 E:\OnlineExam\OnlineExam\Common\ELHelper\obj\Debug\ELHelper.pdb
+E:\Share\OnlineExam\OnlineExam\Common\ELHelper\bin\Debug\ELHelper.dll
+E:\Share\OnlineExam\OnlineExam\Common\ELHelper\bin\Debug\ELHelper.pdb
+E:\Share\OnlineExam\OnlineExam\Common\ELHelper\bin\Debug\ExceptionManager.dll
+E:\Share\OnlineExam\OnlineExam\Common\ELHelper\bin\Debug\ExceptionManager.pdb
+E:\Share\OnlineExam\OnlineExam\Common\ELHelper\obj\Debug\ELHelper.csprojResolveAssemblyReference.cache
+E:\Share\OnlineExam\OnlineExam\Common\ELHelper\obj\Debug\ELHelper.dll
+E:\Share\OnlineExam\OnlineExam\Common\ELHelper\obj\Debug\ELHelper.pdb

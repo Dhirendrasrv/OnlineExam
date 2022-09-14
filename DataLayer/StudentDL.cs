@@ -118,5 +118,36 @@ namespace DataLayer
             return Response;
         }
         // 
+        public DataSet GetAllAnswerDetails()
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[0];
+            // parameter[0] = new LbSprocParameter("idCountry", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, idCountry);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+            DataSet ds = elhelper.ExecuteDataset("USP_GetAllAnswerDetails", parameter);
+            return ds;
+        }
+
+        public DataSet GetAllQuestionDetails()
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[0];
+            // parameter[0] = new LbSprocParameter("idCountry", DbType.Int32, LbSprocParameter.LbParameterDirection.INPUT, idCountry);
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+            DataSet ds = elhelper.ExecuteDataset("USP_GetAllQuestionsDetails", parameter);
+            return ds;
+        }
+
+        public int InsertStudentAnswer(List<EntityLayer.StudentAnswer> answeredTable)
+        {
+            LbSprocParameter[] parameter;
+            parameter = new LbSprocParameter[1];
+            parameter[0] = new LbSprocParameter("@xml", DbType.Xml, LbSprocParameter.LbParameterDirection.INPUT, answeredTable.ToXML());
+            ELHelper.ELHelper elhelper = new ELHelper.ELHelper();
+
+            int Response = 0;
+            Response = Convert.ToInt32(elhelper.ExecuteScalar("USP_InsertStudentAnswer", parameter));
+            return Response;
+        }
     }
 }
